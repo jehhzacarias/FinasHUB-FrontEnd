@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Disciplina</title>
+    <link rel="stylesheet" href="cadastrar-disciplina.css"> <!-- Link para o arquivo CSS externo -->
+</head>
+<body>
+    <div class="discipline-container">
+        <h2>Cadastrar Disciplina</h2>
+        <form id="disciplineForm">
+            <div class="input-container">
+                <label for="codigo">Código</label>
+                <input type="text" id="codigo" name="codigo" required>
+            </div>
+            <div class="input-container">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="input-container">
+                <label for="professor">Professor</label>
+                <input type="text" id="professor" name="professor" required>
+            </div>
+            <div class="input-container">
+                <label for="departamento">Departamento</label>
+                <input type="text" id="departamento" name="departamento" required>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="register-btn">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Simulação do cadastro da disciplina
+        document.getElementById('disciplineForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio padrão do formulário
+
+            // Pega os valores dos campos do formulário
+            const codigo = document.getElementById('codigo').value;
+            const nome = document.getElementById('nome').value;
+            const professor = document.getElementById('professor').value;
+            const departamento = document.getElementById('departamento').value;
+
+            // Simula o cadastro da disciplina e exibe uma mensagem de sucesso
+            alert(`Disciplina ${nome} cadastrada com sucesso!`);
+
+            // Limpa os campos do formulário após o cadastro
+            document.getElementById('disciplineForm').reset();
+        });
+    </script>
+</body>
+</html>

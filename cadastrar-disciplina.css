@@ -1,0 +1,82 @@
+/* Resetando os estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilo principal da página */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000000;  /* Fundo escuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Estilo do container principal de cadastro de disciplina */
+.discipline-container {
+    background-color: #333333;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: left;
+    width: 400px;
+    position: relative;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);  /* Sombra para dar destaque */
+}
+
+.discipline-container h2 {
+    color: #7BDA56;  /* Título verde */
+    margin-bottom: 30px;
+    font-size: 24px;
+    text-align: center;  /* Título centralizado */
+}
+
+/* Estilo dos rótulos dos inputs */
+.discipline-container label {
+    display: block;
+    color: #7BDA56;  /* Texto dos labels verde */
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+/* Estilo dos campos de texto */
+.discipline-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 2px solid #7BDA56;  /* Linha verde para o input */
+    background-color: transparent;
+    color: #7BDA56;
+    font-size: 16px;
+    box-sizing: border-box;
+    outline: none;  /* Remove o contorno padrão dos inputs */
+}
+
+/* Estilo do botão de cadastro */
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.buttons button {
+    width: 100%;
+    padding: 15px;
+    background-color: #9370DB;  /* Cor do botão roxo */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;  /* Suave transição na cor */
+}
+
+.buttons button:hover {
+    background-color: #7B68EE;  /* Cor do botão quando o mouse passa por cima */
+}

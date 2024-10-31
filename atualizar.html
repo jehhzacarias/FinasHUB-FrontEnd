@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Usuário</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="atualizar.css"> <!-- Link para o arquivo CSS externo -->
+</head>
+<body>
+    <div class="update-container">
+        <h2>Atualizar Usuário</h2>
+        <form id="updateForm">
+            <div class="input-container">
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="input-container">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-container">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required>
+                <span class="eye-icon">
+                    <i class="fas fa-eye"></i>
+                </span>
+            </div>
+            <div class="input-container">
+                <label for="course">Curso</label>
+                <input type="text" id="course" name="course" required>
+            </div>
+            <div class="buttons">
+                <button type="button" class="delete-btn" id="deleteAccount">Deletar Conta</button>
+                <button type="submit" class="update-btn">ATUALIZAR</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Simulação de atualização de dados do usuário
+        document.getElementById('updateForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio padrão do formulário
+            alert('Seus dados foram atualizados com sucesso!');
+            // Aqui você pode adicionar código para enviar os dados ao servidor para a atualização real
+        });
+
+        // Simulação de exclusão de conta
+        document.getElementById('deleteAccount').addEventListener('click', function() {
+            const confirmDelete = confirm('Tem certeza que deseja deletar sua conta? Essa ação não pode ser desfeita.');
+            if (confirmDelete) {
+                alert('Sua conta foi deletada com sucesso.');
+                // Aqui você pode adicionar código para enviar a solicitação de exclusão ao servidor
+                // Redirecionar para a página de login ou outra página
+                window.location.href = 'login.html';
+            }
+        });
+
+        // Função para mostrar/esconder a senha
+        document.querySelector('.eye-icon').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+    </script>
+</body>
+</html>

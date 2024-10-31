@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fórum da Disciplina</title>
+    <link rel="stylesheet" href="forun_adm.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="user-info">
+                <a href="atualizar_admin.html" class="user-link">Administrador: Nome do Administrador</a>
+            </div>
+            <div class="logout">
+                <a href="login.html" class="logout-link">Sair</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="forum-discipline">
+            <h1>Fórum - BCC466: TÉCNICAS METAHEURÍSTICAS</h1> <!-- Isso poderia mudar dinamicamente baseado na disciplina -->
+
+            <ul class="posts-list">
+                <!-- Exemplo de um post -->
+                <li class="post-item">
+                    <div class="post-header">
+                        <p><strong>João:</strong> Como otimizar a busca binária?</p>
+                        <button class="delete-post" onclick="deletePost()">Excluir</button>
+                    </div>
+                    <p class="post-content">Estou com dificuldades em otimizar a busca binária quando o array é muito grande.</p>
+                </li>
+
+                <li class="post-item">
+                    <div class="post-header">
+                        <p><strong>Maria:</strong> Dúvidas sobre algoritmos genéticos</p>
+                        <button class="delete-post" onclick="deletePost()">Excluir</button>
+                    </div>
+                    <p class="post-content">Preciso de ajuda para entender como os operadores funcionam em algoritmos genéticos.</p>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        // Função de exclusão de post (aqui seria integrado com o backend)
+        function deletePost() {
+            const confirmation = confirm("Tem certeza que deseja excluir este post?");
+            if (confirmation) {
+                alert("Post excluído.");
+                // Aqui deve ser implementada a lógica de exclusão do post no banco de dados
+            }
+        }
+    </script>
+</body>
+</html>
+

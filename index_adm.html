@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salas Virtuais</title>
+    <link rel="stylesheet" href="styles_adm.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="user-info">
+                <a href="atualizar_admin.html" class="user-link">Administrador: Nome do Administrador</a>
+            </div>
+            <div class="logout">
+                <a href="login.html" class="logout-link">Sair</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="virtual-rooms">
+            <div class="title-section">
+                <h1>Salas Virtuais</h1>
+                <a href="cadastrar-disciplina.html" class="add-discipline">Adicionar</a>
+            </div>
+            <ul class="rooms-list">
+                <!-- Exemplo de como as disciplinas cadastradas podem ser listadas -->
+                <li class="room-item">
+                    <a href="forun_adm.html?disciplina=BCC466" class="room-link">
+                        <p class="room-title">BCC466 - TÉCNICAS METAHEURÍSTICAS PARA OTIMIZAÇÃO COMBINATÓRIA</p>
+                    </a>
+                    <p class="professor">Turma 11 - Professor: PABLO LUIZ ARAÚJO MUNHOZ</p>
+                </li>
+                <li class="room-item">
+                    <a href="forun_adm.html?disciplina=BCC362" class="room-link">
+                        <p class="room-title">BCC362 - SISTEMAS DISTRIBUÍDOS</p>
+                    </a>
+                    <p class="professor">Turma 11 - Professor: JOUBERT DE CASTRO LIMA</p>
+                </li>
+                <li class="room-item">
+                    <a href="forun_adm.html?disciplina=BCC323" class="room-link">
+                        <p class="room-title">BCC323 - ENGENHARIA DE SOFTWARE II</p>
+                    </a>
+                    <p class="professor">Turma 11 - Professor: DANIEL LUDOVICO GUIDONI</p>
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

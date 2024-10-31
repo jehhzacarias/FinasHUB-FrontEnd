@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Salas</title>
+    <link rel="stylesheet" href="styles_us.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="user-info">
+                <a href="atualizar.html" class="user-link" id="userNameLink">Usuário: Nome do Usuário</a>
+            </div>
+            <div class="logout">
+                <a href="login.html" class="logout-link">Sair</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="virtual-rooms">
+            <div class="title-section">
+                <h1>Salas</h1>
+                <a href="#" class="add-discipline" id="openDisciplineModal">Adicionar</a>
+            </div>
+            <ul class="rooms-list" id="roomsList">
+                <!-- Salas preenchidas dinamicamente -->
+            </ul>
+        </section>
+    </main>
+
+    <!-- Modal para departamentos -->
+    <div id="departmentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Departamentos Disponíveis</h2>
+            <ul class="departments-list">
+                <!-- Lista de departamentos -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal para cadastro em disciplinas -->
+    <div id="disciplineModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Disciplinas Disponíveis</h2>
+            <ul class="disciplines-list">
+                <li class="discipline-item">
+                    <p class="discipline-title">BCC501 - INTELIGÊNCIA ARTIFICIAL</p>
+                    <p class="professor">DECOM - Professor: CARLOS EDUARDO</p>
+                    <button class="enroll-button" data-discipline="BCC501" onclick="enroll(this)">Cadastrar</button>
+                </li>
+                <li class="discipline-item">
+                    <p class="discipline-title">BCC502 - SISTEMAS EMBARCADOS</p>
+                    <p class="professor">DECOM - Professor: RENATO SILVA</p>
+                    <button class="enroll-button" data-discipline="BCC502" onclick="enroll(this)">Cadastrar</button>
+                </li>
+                <li class="discipline-item">
+                    <p class="discipline-title">BCC503 - COMPUTAÇÃO GRÁFICA</p>
+                    <p class="professor">DECOM - Professor: ANA PAULA</p>
+                    <button class="enroll-button" data-discipline="BCC503" onclick="enroll(this)">Cadastrar</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Simulação de usuário logado e suas salas
+        const user = {
+            name: "João Estudante",  // Nome do usuário logado
+            rooms: [
+                { code: 'BCC466', title: 'TÉCNICAS METAHEURÍSTICAS PARA OTIMIZAÇÃO COMBINATÓRIA', professor: 'PABLO LUIZ ARAÚJO MUNHOZ' },
+                { code: 'BCC362', title: 'SISTEMAS DISTRIBUÍDOS', professor: 'JOUBERT DE CASTRO LIMA' },
+                { code: 'BCC323', title: 'ENGENHARIA DE SOFTWARE II', professor: 'DANIEL LUDOVICO GUIDONI' }
+            ]
+        };
+
+        // Lista de departamentos disponíveis
+        const departments = [
+            'DEACL - DEPARTAMENTO DE ANALISES CLINICAS',
+            'DEALI - DEPARTAMENTO DE ALIMENTOS',
+            'DEAMB - DEPARTAMENTO DE ENGENHARIA AMBIENTAL',
+            'DEARQ - DEPARTAMENTO DE ARQUITETURA E URBANISMO',
+            'DEART - DEPARTAMENTO DE ARTES',
+            'DEBIO - DEPARTAMENTO DE BIODIVERSIDADE, EVOLUCAO E MEIO AMBIENTE',
+            'DECAD - DEPARTAMENTO DE CIENCIAS ADMINISTRATIVAS',
+            'DECAT - DEPARTAMENTO DE ENGENHARIA DE CONTROLE E AUTOMACAO E TECNICAS FUNDAMENTAIS',
+            'DECBI - DEPARTAMENTO DE CIENCIAS BIOLOGICAS',
+            'DECOM - DEPARTAMENTO DE COMPUTACAO',
+            // Adicione mais departamentos conforme necessário
+        ];
+
+        // Função para preencher as salas
+        function populateRooms() {
+            const roomsList = document.getElementById("roomsList");
+            roomsList.innerHTML = ''; // Limpa a lista
+
+            user.rooms.forEach(room => {
+                const roomItem = `
+                    <li class="room-item">
+                        <a href="forun.html" class="room-link">
+                            <p class="room-title">${room.code} - ${room.title}</p>
+                        </a>
+                        <a href="#" class="turma-link department-link">
+                            <p class="professor">DECOM - Professor: ${room.professor}</p>
+                        </a>
+                    </li>`;
+                roomsList.innerHTML += roomItem;
+            });
+
+            addDepartmentClickListeners(); // Adiciona eventos de clique
+        }
+
+        // Função para abrir o modal de departamentos
+        function openDepartmentModal() {
+            const departmentModal = document.getElementById('departmentModal');
+            const departmentsList = document.querySelector('.departments-list');
+            departmentsList.innerHTML = ''; // Limpa a lista de departamentos
+
+            // Preenche a lista de departamentos
+            departments.forEach(department => {
+                const listItem = `<li class="department-item">${department}</li>`;
+                departmentsList.innerHTML += listItem;
+            });
+
+            departmentModal.style.display = 'block'; // Mostra o modal
+        }
+
+        // Função para abrir o modal de disciplinas
+        const disciplineModal = document.getElementById("disciplineModal");
+        const openDisciplineModalBtn = document.getElementById("openDisciplineModal");
+
+        openDisciplineModalBtn.onclick = function() {
+            disciplineModal.style.display = "block";
+        };
+
+        // Fecha os modais de disciplinas e departamentos
+        const closeModalBtns = document.querySelectorAll('.close');
+        closeModalBtns.forEach(btn => {
+            btn.onclick = function () {
+                btn.closest('.modal').style.display = 'none';
+            };
+        });
+
+        // Fecha os modais ao clicar fora deles
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        };
+
+        // Adiciona os eventos de clique nas partes com "DECOM"
+        function addDepartmentClickListeners() {
+            const departmentLinks = document.querySelectorAll('.department-link');
+            departmentLinks.forEach(link => {
+                link.onclick = function() {
+                    openDepartmentModal();
+                };
+            });
+        }
+
+        // Função de cadastro na disciplina
+        function enroll(button) {
+            const disciplineCode = button.getAttribute('data-discipline');
+            alert(`Você se cadastrou com sucesso na disciplina ${disciplineCode}`);
+            disciplineModal.style.display = "none";
+        }
+
+        // Ao carregar a página, popula as salas e exibe o nome do usuário
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('userNameLink').textContent = `Usuário: ${user.name}`;
+            populateRooms(); // Preenche as salas do usuário
+        });
+    </script>
+</body>
+</html>

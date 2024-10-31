@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fórum</title>
+    <link rel="stylesheet" href="forun.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="user-info">
+                <a href="editar-usuario.html" class="user-link">Usuário: Nome do Usuário</a>
+            </div>
+            <div class="logout">
+                <a href="login.html" class="logout-link">Sair</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="forum">
+            <h1>Fórum de Discussões</h1>
+
+            <!-- Formulário de Novo Tópico -->
+            <div class="new-topic">
+                <h2>Criar Novo Tópico</h2>
+                <form id="topicForm">
+                    <label for="titulo">Título do Tópico:</label>
+                    <input type="text" id="titulo" name="titulo" required>
+
+                    <label for="descricao">Descrição:</label>
+                    <textarea id="descricao" name="descricao" rows="5" required></textarea>
+
+                    <button type="submit">Criar Tópico</button>
+                </form>
+            </div>
+
+            <!-- Lista de Tópicos -->
+            <div class="topics-list">
+                <h2>Todos os Tópicos</h2>
+                <ul id="topics-container">
+                    <!-- Tópicos serão carregados dinamicamente com JavaScript -->
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Simulação do nome do usuário logado
+        const usuarioLogado = "Nome do Usuário";
+
+        // Simulação de dados dos tópicos
+        const topicos = [
+            { id: 1, titulo: 'Como otimizar algoritmos de busca?', autor: 'João', data: '05/10/2024' },
+            { id: 2, titulo: 'Melhores práticas para design responsivo', autor: 'Nome do Usuário', data: '04/10/2024' },  // Exemplo do próprio usuário
+            { id: 3, titulo: 'Como fazer deploy em produção?', autor: 'Carlos', data: '03/10/2024' }
+        ];
+
+        // Função para carregar tópicos na tela do fórum
+        function carregarTopicos() {
+            const topicsContainer = document.getElementById('topics-container');
+            topicsContainer.innerHTML = '';  // Limpa o container antes de renderizar os tópicos
+
+            topicos.forEach(topico => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <div class="topic-header">
+                        <a href="detalhes-topico.html?id=${topico.id}" class="topic-link">${topico.titulo}</a>
+                        ${topico.autor === usuarioLogado ? `<button class="delete-topic" onclick="excluirTopico(${topico.id})">Excluir</button>` : ''}
+                    </div>
+                    <p>Criado por ${topico.autor} em ${topico.data}</p>
+                `;
+                topicsContainer.appendChild(li);
+            });
+        }
+
+        // Função para criar um novo tópico dinamicamente no front-end
+        document.getElementById('topicForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Evita o envio padrão do formulário
+
+            // Obtém os dados do novo tópico
+            const novoTitulo = document.getElementById('titulo').value;
+            const novaDescricao = document.getElementById('descricao').value;
+            const dataAtual = new Date().toLocaleDateString();  // Data atual
+
+            // Gera um novo ID para o tópico (incremental para a simulação)
+            const novoId = topicos.length + 1;
+
+            // Adiciona o novo tópico na lista de tópicos (simulação no front-end)
+            const novoTopico = { id: novoId, titulo: novoTitulo, autor: usuarioLogado, data: dataAtual };
+            topicos.push(novoTopico);
+
+            // Recarrega a lista de tópicos para incluir o novo
+            carregarTopicos();
+
+            // Limpa os campos do formulário após criar o tópico
+            document.getElementById('titulo').value = '';
+            document.getElementById('descricao').value = '';
+        });
+
+        // Função para excluir tópico (simulação de front-end)
+        function excluirTopico(id) {
+            const confirmDelete = confirm("Você tem certeza que deseja excluir este tópico?");
+            if (confirmDelete) {
+                // Remove o tópico da lista de tópicos
+                const index = topicos.findIndex(topico => topico.id === id);
+                if (index !== -1) {
+                    topicos.splice(index, 1);  // Remove o tópico do array
+                    carregarTopicos();  // Recarrega a lista de tópicos
+                }
+            }
+        }
+
+        // Chama a função para carregar os tópicos ao iniciar a página
+        carregarTopicos();
+    </script>
+</body>
+</html>

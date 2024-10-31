@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.register-container {
+    background-color: #333333;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: left;
+    width: 500px;
+    height: auto; /* Ajustar altura automaticamente */
+    position: relative;
+}
+
+.register-container h2 {
+    color: #7BDA56;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.register-container label {
+    display: block;
+    color: #7BDA56;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.register-container input[type="text"],
+.register-container input[type="email"],
+.register-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 2px solid #7BDA56; 
+    background-color: transparent;
+    color: #7BDA56;
+    box-sizing: border-box;
+}
+
+.register-container .input-container {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.register-container .eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #000000;
+}
+
+.register-container button {
+    width: 100%;
+    padding: 15px;
+    background-color: #9370DB;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.register-container button:hover {
+    background-color: #7B68EE;
+}

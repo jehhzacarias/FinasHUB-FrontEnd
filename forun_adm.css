@@ -1,0 +1,98 @@
+/* Resetando estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilo principal */
+body {
+    background-color: #000000;
+    color: #9370DB;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #333333;
+    padding: 10px 20px;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-link, .logout-link {
+    color: #9370DB;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.user-link:hover, .logout-link:hover {
+    text-decoration: underline;
+}
+
+/* Estilo do fórum */
+.forum-discipline {
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.forum-discipline h1 {
+    font-size: 28px;
+    color: #7BDA56;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Lista de posts */
+.posts-list {
+    list-style: none;
+    padding: 0;
+}
+
+.post-item {
+    background-color: #333333;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-header p {
+    color: #7BDA56;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.post-content {
+    margin-top: 10px;
+    color: #FFF;
+    font-size: 16px;
+}
+
+/* Botão de excluir */
+.delete-post {
+    background-color: #FA2727;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.delete-post:hover {
+    background-color: #FF6347;
+}
